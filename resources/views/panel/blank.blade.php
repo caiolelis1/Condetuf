@@ -28,7 +28,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -92,12 +92,12 @@
                       <label for="aConcluinte">Alunos Concluintes</label>
                       <input min="0" max="1000000" type="number" class="form-control" id="aConcluinte" placeholder="">
                     </div>
-                  </div>    
+                  </div>
                 </div>
               </form>
 
 
-         
+
               <div class="card-header">
                 <h3 class="card-title">Recursos Humanos</h3>
               </div>
@@ -156,7 +156,7 @@
                       </div>
                     </div>
               </form>
-        
+
               <div class="card-header">
                 <h3 class="card-title">Infraestrutura</h3>
               </div>
@@ -191,11 +191,38 @@
                   <button type="submit" class="btn btn-success mt-4 mb-3 float-right col-2">Enviar</button>
                 </div>
               </form>
+              <div class="col-12">
+                <?php
+
+      use Khill\Lavacharts\Lavacharts;
+
+      $lava = new Lavacharts;
+
+      $reasons = Lava::DataTable();
+
+      $reasons->addStringColumn('Reasons')
+              ->addNumberColumn('Percent')
+              ->addRow(['Check Reviews', 5])
+              ->addRow(['Watch Trailers', 2])
+              ->addRow(['See Actors Other Work', 4])
+              ->addRow(['Settle Argument', 89]);
+
+      Lava::PieChart('IMDB', $reasons, [
+          'title'  => 'Reasons I visit IMDB',
+          'is3D'   => true,
+          'slices' => [
+              ['offset' => 0.2],
+              ['offset' => 0.25],
+              ['offset' => 0.3]
+          ]
+      ]);
+
+              </div>
                 </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-          
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->

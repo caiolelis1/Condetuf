@@ -33,3 +33,6 @@ Route::middleware('auth')->group(function() {
 // Section Pages
 Route::view('/sample/error404','errors.404')->name('error404');
 Route::view('/sample/error500','errors.500')->name('error500');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
